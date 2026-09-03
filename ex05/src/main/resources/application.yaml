@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: ex05
+server:
+  port: 8081
