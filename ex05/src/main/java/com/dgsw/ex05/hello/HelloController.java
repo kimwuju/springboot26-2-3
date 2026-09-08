@@ -1,6 +1,7 @@
 package com.dgsw.ex05.hello;
 
 import com.dgsw.ex05.computer.Computer;
+import com.dgsw.ex05.computer.MacBook;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,20 @@ import java.util.Map;
 
 @RestController
 public class HelloController {
-    
+
     @Autowired
     private Computer computer;
+
+    private final MacBook macBook;
+    public HelloController(MacBook macBook) {
+        this.macBook = macBook;
+    }
+
+    @GetMapping("macBook")
+    public String macBook() {
+        System.out.println("macBook" + macBook);
+        return "Hello MacBook!";
+    }
 
     @GetMapping("computer")
     public String computer() {
