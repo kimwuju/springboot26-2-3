@@ -24,4 +24,19 @@ public class ProductController {
         return productService.findById(id);
     }
 
+    @PostMapping()
+    public Product save(@RequestBody Product product) {
+        return productService.save(product);
+    }
+
+    @PutMapping("/{id}")
+    public Product update(@PathVariable Long id, @RequestBody Product product) throws Exception {
+        return productService.update(id, product);
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean deleteById(@PathVariable Long id) throws Exception {
+        return productService.deleteProduct(id);
+    }
+
 }
