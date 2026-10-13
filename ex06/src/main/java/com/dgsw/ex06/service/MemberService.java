@@ -1,7 +1,9 @@
 package com.dgsw.ex06.service;
 
+import com.dgsw.ex06.dto.MemberRequestDto;
 import com.dgsw.ex06.entity.Member;
 import com.dgsw.ex06.repository.MemberRepository;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +23,12 @@ public class MemberService {
         return memberRepository.findById(id).orElse(null);
     }
 
-    public Member save(Member member) {
+    public Member save(MemberRequestDto memberRequestDto) {
+        Member member = Member.builder()
+                .name(memberRequestDto.getName())
+                .email(memberRequestDto.getEmail())
+                .build();
+
         return memberRepository.save(member);
     }
 

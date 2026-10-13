@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("products")
+@RequestMapping("/products")
 @CrossOrigin
 public class ProductController {
     private final ProductService productService;

@@ -1,15 +1,17 @@
 package com.dgsw.ex06.controller;
 
+import com.dgsw.ex06.dto.MemberRequestDto;
 import com.dgsw.ex06.entity.Member;
 import com.dgsw.ex06.service.MemberService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("members")
+@RequestMapping("/members")
 @RequiredArgsConstructor
 @CrossOrigin
 public class MemberController {
@@ -26,8 +28,8 @@ public class MemberController {
     }
 
     @PostMapping()
-    public Member save(@RequestBody  Member member) {
-        return memberService.save(member);
+    public Member save(@RequestBody @Valid MemberRequestDto memberRequestDto) {
+        return memberService.save(memberRequestDto);
     }
 
     @PutMapping("/{id}")
@@ -38,7 +40,7 @@ public class MemberController {
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "회원을 삭제합니다", description = "삭제하고 싶은 id 입력하세요")
+    @Operation(summary = "회원을 삭제합니다", description = "삭제하고 싶은 id 입력하세다")
     public boolean deleteMember(@PathVariable Long id) throws Exception {
         return memberService.deleteMember(id);
     }
